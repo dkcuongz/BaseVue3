@@ -1,0 +1,91 @@
+<div class="hold-transition register-page">
+    <div class="register-box">
+        <div class="register-logo">
+            <a href="/login"><b>Admin</b>LTE</a>
+        </div>
+        <div class="card">
+            <div class="card-body register-card-body">
+                <p class="login-box-msg">Register a new membership</p>
+                <Form @submit="onSubmit" method="post" v-slot="{ errors, meta }">
+                    <div class="input-group mb-1">
+                        <Field name="name" rules="required" v-slot="{ meta }"
+                               :class="[!errors.name ? 'form-control' : 'form-control is-invalid']"
+                               v-model="formRegister.name"
+                               placeholder="Full name"/>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <ErrorMessage name="name" class="d-block mb-2 error invalid-feedback px-2"/>
+                    <div class="input-group mb-1">
+                        <Field name="email" rules="email|required" v-slot="{ meta }"
+                               :class="[!errors.email ? 'form-control' : 'form-control is-invalid']"
+                               v-model="formRegister.email"
+                               placeholder="Email"/>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <ErrorMessage name="email" class="d-block mb-2 error invalid-feedback px-2"/>
+                    <div class="input-group mb-1">
+                        <Field name="password" rules="required|min:8" type="password"
+                               :class="[!errors.password ? 'form-control' : 'form-control is-invalid']"
+                               v-model="formRegister.password"
+                               placeholder="Password"/>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <ErrorMessage name="password" class="d-block mb-2 error invalid-feedback px-2"/>
+                    <div class="input-group mb-1">
+                        <Field name="passwordConfirmation" rules="required|confirmed:@password" type="password"
+                               :class="[!errors.passwordConfirmation ? 'form-control' : 'form-control is-invalid']"
+                               v-model="formRegister.passwordConfirmation"
+                               placeholder="Retype password"/>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <ErrorMessage name="passwordConfirmation" class="d-block mb-2 error invalid-feedback px-2"/>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                                <label for="agreeTerms" class="px-2">
+                                    I agree to the <a href="#">terms</a>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </Form>
+                <div class="social-auth-links text-center">
+                    <p>- OR -</p>
+                    <a href="#" class="btn btn-block btn-primary">
+                        <i class="fab fa-facebook mr-2"></i>
+                        Sign up using Facebook
+                    </a>
+                    <a href="#" class="btn btn-block btn-danger">
+                        <i class="fab fa-google-plus mr-2"></i>
+                        Sign up using Google+
+                    </a>
+                </div>
+
+                <a href="/login" class="text-center">I already have a membership</a>
+            </div>
+            <!-- /.form-box -->
+        </div><!-- /.card -->
+    </div>
+</div>
